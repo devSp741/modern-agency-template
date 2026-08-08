@@ -12,14 +12,15 @@ const WebvireUI = {
     this.initMobileDrawer();
     this.initBackToTopButton();
     this.initAOS();
-    
+    this.initAudioController();
+
     if (pageName === 'index' || pageName === 'home') {
       this.init3DHeroCanvas();
       this.initCounters();
       this.initVideoModal();
       this.initTestimonialSlider();
     }
-    
+
     if (pageName === 'services') {
       this.initCostEstimator();
     }
@@ -78,8 +79,9 @@ const WebvireUI = {
               <a href="contact.html" class="${activePage === 'contact' ? 'active' : ''}">Contact Us</a>
             </nav>
 
-            <div style="display: flex; gap: 12px; align-items: center;">
-              <a href="contact.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Get Quote <i class="fa-solid fa-arrow-right"></i></a>
+            <div style="display: flex; gap: 10px; align-items: center;">
+              <button class="sound-toggle-btn" id="sound-toggle-btn" aria-label="Toggle Sound" title="Sound Muted (Click to Enable)"><i class="fa-solid fa-volume-xmark"></i></button>
+              <a href="contact.html" class="btn btn-primary nav-cta-btn">Get Quote <i class="fa-solid fa-arrow-right"></i></a>
               <button class="hamburger-btn" id="open-drawer-btn" aria-label="Open Navigation"><i class="fa-solid fa-bars"></i></button>
             </div>
           </div>
@@ -184,7 +186,11 @@ const WebvireUI = {
           </div>
         </div>
 
-        <div style="padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <div style="padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 12px;">
+          <button class="sound-toggle-drawer-btn" id="drawer-sound-btn" aria-label="Toggle Audio Effects">
+            <span style="display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-volume-xmark" id="drawer-sound-icon"></i> Sound Effects</span>
+            <span class="sound-status-badge" id="drawer-sound-status">OFF</span>
+          </button>
           <a href="contact.html" class="btn btn-primary" style="width: 100%;">Get In Touch <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       `;
@@ -402,39 +408,100 @@ const WebvireUI = {
     statElements.forEach(el => observer.observe(el));
   },
 
+  initAudioController() {
+    let isSoundEnabled = false;
+
+    const toggleAudioState = () => {
+      isSoundEnabled = !isSoundEnabled;
+      const headerBtn = document.getElementById('sound-toggle-btn');
+      const drawerBtn = document.getElementById('drawer-sound-btn');
+      const drawerIcon = document.getElementById('drawer-sound-icon');
+      const drawerStatus = document.getElementById('drawer-sound-status');
+
+      if (isSoundEnabled) {
+        if (headerBtn) {
+          headerBtn.classList.add('active');
+          headerBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+          headerBtn.title = 'Sound Enabled (Click to Mute)';
+        }
+        if (drawerBtn) drawerBtn.classList.add('active');
+        if (drawerIcon) drawerIcon.className = 'fa-solid fa-volume-high';
+        if (drawerStatus) drawerStatus.innerText = 'ON';
+
+        // Play subtle Web Audio API chime tone
+        try {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) {
+            const ctx = new AudioContext();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(440, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.15);
+            gain.gain.setValueAtTime(0.1, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.15);
+          }
+        } catch (e) {
+          console.log('Audio Context muted');
+        }
+      } else {
+        if (headerBtn) {
+          headerBtn.classList.remove('active');
+          headerBtn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+          headerBtn.title = 'Sound Muted (Click to Enable)';
+        }
+        if (drawerBtn) drawerBtn.classList.remove('active');
+        if (drawerIcon) drawerIcon.className = 'fa-solid fa-volume-xmark';
+        if (drawerStatus) drawerStatus.innerText = 'OFF';
+      }
+    };
+
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('#sound-toggle-btn') || e.target.closest('#drawer-sound-btn')) {
+        toggleAudioState();
+      }
+    });
+  },
+
   initVideoModal() {
     const videoBtns = document.querySelectorAll('.btn-video');
     if (!videoBtns.length) return;
 
-    let modal = document.getElementById('video-modal');
-    if (!modal) {
-      modal = document.createElement('div');
-      modal.id = 'video-modal';
-      modal.className = 'video-modal-overlay';
-      modal.innerHTML = `
-        <div class="video-modal-container">
-          <button class="close-video-btn" id="close-video-btn"><i class="fa-solid fa-xmark"></i></button>
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" title="Webvire Introduction Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      `;
-      document.body.appendChild(modal);
-    }
-
-    const closeBtn = document.getElementById('close-video-btn');
-    
     videoBtns.forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
+        
+        let modal = document.getElementById('video-modal');
+        if (!modal) {
+          modal = document.createElement('div');
+          modal.id = 'video-modal';
+          modal.className = 'video-modal-overlay';
+          document.body.appendChild(modal);
+        }
+
+        modal.innerHTML = `
+          <div class="video-modal-container">
+            <button class="close-video-btn" id="close-video-btn"><i class="fa-solid fa-xmark"></i></button>
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" title="Webvire Introduction Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        `;
         modal.classList.add('active');
+
+        const closeBtn = document.getElementById('close-video-btn');
+        const closeModal = () => {
+          modal.classList.remove('active');
+          modal.innerHTML = ''; // Destroys iframe so audio stops instantly
+        };
+
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (ev) => {
+          if (ev.target === modal) closeModal();
+        });
       });
-    });
-
-    if (closeBtn) {
-      closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-    }
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.classList.remove('active');
     });
   },
 
