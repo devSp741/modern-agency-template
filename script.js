@@ -65,8 +65,7 @@ const WebvireUI = {
         <header class="nav-header">
           <div class="container nav-inner">
             <a href="index.html" class="logo">
-              <span class="logo-mark"><i class="fa-solid fa-code"></i></span>
-              Webvire
+              <img src="assets/logo.png" alt="Webvire Logo" class="logo-img">
             </a>
 
             <nav class="nav-links">
@@ -100,8 +99,7 @@ const WebvireUI = {
           <div class="footer-grid">
             <div>
               <a href="index.html" class="logo" style="margin-bottom: 14px;">
-                <span class="logo-mark"><i class="fa-solid fa-code"></i></span>
-                Webvire
+                <img src="assets/logo.png" alt="Webvire Logo" class="logo-img">
               </a>
               <p>We empower businesses with cutting-edge web applications, mobile apps, enterprise software and cloud digital transformation.</p>
               <div class="topbar-socials" style="margin-top: 18px;">
@@ -169,8 +167,7 @@ const WebvireUI = {
         <div>
           <div class="mobile-drawer-header">
             <a href="index.html" class="logo">
-              <span class="logo-mark"><i class="fa-solid fa-code"></i></span>
-              Webvire
+              <img src="assets/logo.png" alt="Webvire Logo" class="logo-img">
             </a>
             <button class="close-drawer-btn" id="close-drawer-btn"><i class="fa-solid fa-xmark"></i></button>
           </div>

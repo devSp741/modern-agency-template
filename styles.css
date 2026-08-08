@@ -191,6 +191,15 @@ img {
   letter-spacing: -0.02em;
 }
 
+.logo-img {
+  height: 50px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(32, 215, 255, 0.2));
+}
+
 .logo-mark {
   width: 36px;
   height: 36px;
@@ -2050,7 +2059,7 @@ img {
     width: 100% !important;
   }
 
-  .hero-grid > div {
+  .hero-grid>div {
     width: 100% !important;
     box-sizing: border-box !important;
     padding: 0 4px !important;
@@ -2421,6 +2430,7 @@ img {
     border-bottom: 1px solid var(--card-border) !important;
     padding: 18px 14px !important;
   }
+
   .feature-card:last-child {
     border-bottom: 0 !important;
   }
@@ -2456,7 +2466,7 @@ img {
     margin-bottom: 16px !important;
   }
 
-  .cta-banner div > div[style*="display: flex"] {
+  .cta-banner div>div[style*="display: flex"] {
     justify-content: center !important;
     gap: 10px !important;
     width: 100% !important;
