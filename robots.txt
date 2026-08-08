@@ -1,0 +1,5 @@
+# Webvire Technologies Robots.txt File
+User-agent: *
+Allow: /
+
+Sitemap: https://webvire.com/sitemap.xml
