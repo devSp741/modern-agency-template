@@ -79,7 +79,6 @@ const WebvireUI = {
             </nav>
 
             <div style="display: flex; gap: 10px; align-items: center;">
-              <button class="sound-toggle-btn" id="sound-toggle-btn" aria-label="Toggle Sound" title="Sound Muted (Click to Enable)"><i class="fa-solid fa-volume-xmark"></i></button>
               <a href="/contact" class="btn btn-primary nav-cta-btn">Get Quote <i class="fa-solid fa-arrow-right"></i></a>
               <button class="hamburger-btn" id="open-drawer-btn" aria-label="Open Navigation"><i class="fa-solid fa-bars"></i></button>
             </div>

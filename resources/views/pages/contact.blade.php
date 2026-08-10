@@ -36,7 +36,7 @@
         <div class="feature-card">
           <div class="feature-icon-box icon-orange"><i class="fa-solid fa-file-contract"></i></div>
           <h3>Proposal in 24 Hours</h3>
-          <p>Clear architecture roadmap, scope & timeline breakdown.</p>
+          <p>Clear architecture roadmap, scope &amp; timeline breakdown.</p>
         </div>
       </div>
     </div>
@@ -111,21 +111,30 @@
         <div class="pill-badge" style="margin-bottom: 10px;">FREE ESTIMATION</div>
         <h3 style="font-size: 22px; font-weight: 800; margin-bottom: 20px; color: #0f172a;">Request Free Consultation</h3>
 
-        @if(session('success'))
-          <div style="background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; padding: 14px; border-radius: 8px; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
-            <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
-          </div>
-        @endif
+        <!-- Dynamic Success/Error Alert Containers -->
+        <div id="contact-alert-container">
+          @if(session('success'))
+            <div style="background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; padding: 14px 18px; border-radius: 10px; font-size: 14px; font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-circle-check" style="font-size: 18px;"></i> {{ session('success') }}
+            </div>
+          @endif
 
-        @if($errors->any())
-          <div style="background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; padding: 14px; border-radius: 8px; font-size: 14px; margin-bottom: 20px;">
-            <ul style="margin: 0; padding-left: 20px;">
-              @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-              @endforeach
-            </ul>
-          </div>
-        @endif
+          @if(session('error'))
+            <div style="background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; padding: 14px 18px; border-radius: 10px; font-size: 14px; font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-circle-exclamation" style="font-size: 18px;"></i> {{ session('error') }}
+            </div>
+          @endif
+
+          @if($errors->any())
+            <div style="background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; padding: 14px 18px; border-radius: 10px; font-size: 14px; margin-bottom: 20px;">
+              <ul style="margin: 0; padding-left: 20px;">
+                @foreach($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+          @endif
+        </div>
 
         <form id="webvire-contact-form" action="{{ route('contact.submit') }}" method="POST">
           @csrf
@@ -175,7 +184,9 @@
             </div>
 
             <div class="form-group full">
-              <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 15px;">Get Free Consultation <i class="fa-solid fa-arrow-right"></i></button>
+              <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 15px; font-weight: 700;">
+                <span id="btn-text">Get Free Consultation <i class="fa-solid fa-arrow-right"></i></span>
+              </button>
             </div>
           </div>
         </form>
@@ -264,6 +275,60 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       WebvireUI.init('contact');
+
+      const form = document.getElementById('webvire-contact-form');
+      const submitBtn = document.getElementById('submit-btn');
+      const btnText = document.getElementById('btn-text');
+      const alertContainer = document.getElementById('contact-alert-container');
+
+      if (!form) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Loading state
+        submitBtn.disabled = true;
+        btnText.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending Inquiry...';
+
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest',
+              'Accept': 'application/json'
+            }
+          });
+
+          const data = await response.json();
+
+          if (response.ok && data.success) {
+            alertContainer.innerHTML = `
+              <div style="background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; padding: 14px 18px; border-radius: 10px; font-size: 14px; font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-circle-check" style="font-size: 18px;"></i> ${data.message}
+              </div>
+            `;
+            form.reset();
+          } else {
+            alertContainer.innerHTML = `
+              <div style="background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; padding: 14px 18px; border-radius: 10px; font-size: 14px; font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-circle-exclamation" style="font-size: 18px;"></i> ${data.message || 'Error submitting form. Please check your inputs.'}
+              </div>
+            `;
+          }
+        } catch (err) {
+          alertContainer.innerHTML = `
+            <div style="background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; padding: 14px 18px; border-radius: 10px; font-size: 14px; font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-circle-exclamation" style="font-size: 18px;"></i> An unexpected network error occurred. Please try again or call us at +91 7309277237.
+            </div>
+          `;
+        } finally {
+          submitBtn.disabled = false;
+          btnText.innerHTML = 'Get Free Consultation <i class="fa-solid fa-arrow-right"></i>';
+        }
+      });
     });
   </script>
 @endpush

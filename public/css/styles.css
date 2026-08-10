@@ -2747,37 +2747,132 @@ img {
   margin-bottom: 14px;
 }
 
-/* Tech Stack Matrix (About Us Page) */
-.tech-matrix-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 16px;
+/* ============================================================
+   BRAND LOGO MARQUEE SLIDER — LIGHT & FRESH THEME
+   ============================================================ */
+.brand-marquee-section {
+  padding: 50px 0;
+  background: #f1f5f9;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  overflow: hidden;
+  position: relative;
 }
 
-.tech-item-card {
+.brand-marquee-section::before,
+.brand-marquee-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.brand-marquee-section::before {
+  left: 0;
+  background: linear-gradient(90deg, #f1f5f9 0%, rgba(241, 245, 249, 0) 100%);
+}
+
+.brand-marquee-section::after {
+  right: 0;
+  background: linear-gradient(270deg, #f1f5f9 0%, rgba(241, 245, 249, 0) 100%);
+}
+
+.brand-marquee-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 0 20px;
+}
+
+.brand-marquee-header .pill-badge {
+  background: rgba(23, 105, 255, 0.08);
+  border: 1px solid rgba(23, 105, 255, 0.2);
+  color: #1769ff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  padding: 5px 16px;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.brand-marquee-header h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.brand-marquee-track-container {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  padding: 12px 0;
+}
+
+.brand-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  animation: scrollBrandMarquee 32s linear infinite;
+  white-space: nowrap;
+  will-change: transform;
+  padding: 8px 0;
+}
+
+.brand-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollBrandMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.brand-card-item {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 84px;
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 20px 14px;
-  text-align: center;
-  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.03);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
 }
 
-.tech-item-card:hover {
+.brand-card-item:hover {
+  background: #ffffff;
+  border-color: #1769ff;
   transform: translateY(-5px);
-  border-color: var(--cyan-glow);
-  box-shadow: 0 12px 30px rgba(32, 215, 255, 0.2);
+  box-shadow: 0 12px 30px rgba(23, 105, 255, 0.15);
 }
 
-.tech-item-card i {
-  font-size: 28px;
-  margin-bottom: 10px;
-  display: block;
+.brand-card-item img {
+  max-width: 145px;
+  max-height: 46px;
+  object-fit: contain;
+  filter: none !important;
+  opacity: 1 !important;
+  transition: transform 0.3s ease;
 }
 
-.tech-item-card span {
-  font-size: 13px;
-  font-weight: 700;
-  color: #0f172a;
+.brand-card-item:hover img {
+  transform: scale(1.08);
 }

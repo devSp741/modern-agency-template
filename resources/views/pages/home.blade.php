@@ -17,9 +17,6 @@
         <div class="actions">
           <a class="btn btn-primary" href="{{ route('contact') }}">Start Your Project <i class="fa-solid fa-arrow-right"></i></a>
           <a class="btn btn-outline" href="{{ route('services') }}">Explore Services</a>
-          <a class="btn btn-video" href="#">
-            <span class="play-icon"><i class="fa-solid fa-play"></i></span> Watch Video
-          </a>
         </div>
 
         <div class="hero-stats">
@@ -153,7 +150,8 @@
         </div>
       </div>
     </div>
-  </div>
+  <!-- Brand Logo Slider Marquee Showcase -->
+  @include('partials.brand-slider')
 
   <!-- Core Services -->
   <section class="section section-alt" data-aos="fade-up">
