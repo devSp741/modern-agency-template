@@ -1,38 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Webvire Enterprise IT Solutions - SOC2 Cloud Architecture, Cybersecurity, Kubernetes Infrastructure, DevOps, and Custom ERP Systems.">
-  <meta name="keywords" content="Enterprise IT Solutions, Cloud Architecture, SOC2 Cybersecurity, Kubernetes Scale, Enterprise Software">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://webvire.com/it-solutions.html">
-  <title>IT Solutions | Webvire - Enterprise Cloud & Cybersecurity</title>
+@extends('layouts.app')
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" href="assets/logo.png">
-  <link rel="apple-touch-icon" href="assets/logo.png">
+@section('title', 'IT Solutions | Webvire - Enterprise Cloud, Security & ERP Software')
+@section('meta_description', 'Enterprise technology solutions by Webvire: Cloud Architecture, Cybersecurity, ERP & CRM Systems, AI Machine Learning, DevOps, and 24/7 Managed IT Support.')
+@section('meta_keywords', 'Enterprise IT Solutions, Cloud Architecture, Cybersecurity, ERP CRM Systems, AI Machine Learning, DevOps, Managed IT')
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://webvire.com/it-solutions.html">
-  <meta property="og:title" content="IT Solutions | Webvire Technologies">
-  <meta property="og:description" content="Enterprise cloud architecture, cybersecurity matrix, and scalable IT infrastructure.">
-  <meta property="og:image" content="https://webvire.com/assets/partner_workspace_3d.png">
-
-  <!-- Font Awesome 6 Icons Library & AOS Animations -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-  <!-- Reusable Topbar Placeholder -->
-  <div id="webvire-topbar"></div>
-
-  <!-- Reusable Header Navbar Placeholder -->
-  <div id="webvire-header"></div>
-
+@section('content')
   <!-- Subpage Hero -->
   <section class="subpage-hero">
     <div class="container">
@@ -84,42 +56,42 @@
           <div class="service-icon-circle icon-blue"><i class="fa-solid fa-cloud"></i></div>
           <h3>Cloud Architecture</h3>
           <p>AWS, Azure & GCP migration with zero data loss.</p>
-          <a class="card-link" href="contact.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('contact') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card-ref">
           <div class="service-icon-circle icon-rose"><i class="fa-solid fa-shield-halved"></i></div>
           <h3>Cybersecurity</h3>
           <p>End-to-end security audits & penetration testing.</p>
-          <a class="card-link" href="contact.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('contact') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card-ref">
           <div class="service-icon-circle icon-purple"><i class="fa-solid fa-database"></i></div>
           <h3>ERP & CRM Systems</h3>
           <p>Unified platforms for inventory, sales & HR.</p>
-          <a class="card-link" href="contact.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('contact') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card-ref">
           <div class="service-icon-circle icon-mint"><i class="fa-solid fa-brain"></i></div>
           <h3>AI & Machine Learning</h3>
           <p>Predictive analytics & intelligent workflow automation.</p>
-          <a class="card-link" href="contact.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('contact') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card-ref">
           <div class="service-icon-circle icon-sky"><i class="fa-solid fa-server"></i></div>
           <h3>DevOps & Automation</h3>
           <p>Kubernetes, CI/CD pipelines & Infrastructure as Code.</p>
-          <a class="card-link" href="contact.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('contact') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card-ref">
           <div class="service-icon-circle icon-orange"><i class="fa-solid fa-headset"></i></div>
           <h3>Managed IT Support</h3>
           <p>24/7 system monitoring & enterprise IT helpdesk.</p>
-          <a class="card-link" href="contact.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('contact') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -143,7 +115,7 @@
           <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 18px;">
             Seamlessly modernize legacy monoliths to containerized microservices on Kubernetes, reducing cloud hosting overheads by up to 40%.
           </p>
-          <a class="card-link" href="contact.html">Explore Cloud Migration <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('contact') }}">Explore Cloud Migration <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="project-card" style="padding: 34px 26px;">
@@ -154,7 +126,7 @@
           <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 18px;">
             Protect your sensitive data with zero-trust architecture, SOC2/ISO compliance hardening, encrypted data vaults, and real-time vulnerability detection.
           </p>
-          <a class="card-link" href="contact.html">Explore Cybersecurity <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('contact') }}">Explore Cybersecurity <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="project-card" style="padding: 34px 26px;">
@@ -165,7 +137,7 @@
           <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 18px;">
             Bespoke ERP and CRM software solutions tailored to your unique internal workflows, supply chain management, and automated financial audit reports.
           </p>
-          <a class="card-link" href="contact.html">Explore Custom ERP <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('contact') }}">Explore Custom ERP <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -218,33 +190,23 @@
           <p>Speak with our senior solutions architects to get a tailored proposal.</p>
           
           <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-            <a class="btn btn-primary" href="contact.html">Get Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
-            <a class="btn btn-outline" href="contact.html">Contact Us</a>
+            <a class="btn btn-primary" href="{{ route('contact') }}">Get Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="btn btn-outline" href="{{ route('contact') }}">Contact Us</a>
           </div>
         </div>
 
         <div class="cta-img-box">
-          <img src="assets/cta_rocket_3d.png" alt="Webvire Rocket Launch 3D Graphic">
+          <img src="{{ asset('assets/cta_rocket_3d.png') }}" alt="Webvire Rocket Launch 3D Graphic">
         </div>
       </div>
     </div>
   </section>
+@endsection
 
-  <!-- Reusable Footer Placeholder -->
-  <div id="webvire-footer"></div>
-
-  <!-- Floating Back to Top Button -->
-  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to Top">
-    <i class="fa-solid fa-arrow-up"></i>
-  </button>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script src="script.js"></script>
+@push('scripts')
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       WebvireUI.init('it-solutions');
     });
   </script>
-</body>
-</html>
+@endpush

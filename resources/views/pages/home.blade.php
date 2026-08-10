@@ -1,92 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Webvire Technologies - Premier Smart IT Solutions Agency. We deliver Custom Web Development, Mobile Apps, Enterprise Software & Cloud Digital Transformation.">
-  <meta name="keywords" content="Web Development Agency, Mobile App Development, Custom Software Solutions, UI UX Design, IT Consulting, Webvire Technologies">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://webvire.com/index.html">
-  <title>Webvire | Smart IT Solutions & Software Development Agency</title>
+@extends('layouts.app')
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" href="assets/logo.png">
-  <link rel="apple-touch-icon" href="assets/logo.png">
+@section('title', 'Webvire | Smart IT Solutions & Software Development Agency')
 
-  <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://webvire.com/index.html">
-  <meta property="og:title" content="Webvire | Smart IT Solutions & Software Development">
-  <meta property="og:description" content="Empowering businesses with custom web applications, mobile apps, enterprise software and cloud digital transformation.">
-  <meta property="og:image" content="https://webvire.com/assets/cta_rocket_3d.png">
-  <meta property="og:site_name" content="Webvire Technologies">
-
-  <!-- Twitter Cards -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://webvire.com/index.html">
-  <meta name="twitter:title" content="Webvire | Smart IT Solutions & Software Development">
-  <meta name="twitter:description" content="Empowering businesses with custom web applications, mobile apps, enterprise software and cloud digital transformation.">
-  <meta name="twitter:image" content="https://webvire.com/assets/cta_rocket_3d.png">
-
-  <!-- Schema.org Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Webvire Technologies",
-    "image": "https://webvire.com/assets/partner_workspace_3d.png",
-    "@id": "https://webvire.com",
-    "url": "https://webvire.com",
-    "telephone": "+91-7302772277",
-    "email": "info@webvire.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Karl Road, Near Thana",
-      "addressLocality": "Gonda, Lucknow",
-      "addressRegion": "Uttar Pradesh",
-      "postalCode": "271001",
-      "addressCountry": "IN"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 26.8467,
-      "longitude": 80.9462
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
-      ],
-      "opens": "09:00",
-      "closes": "19:00"
-    },
-    "sameAs": [
-      "https://www.linkedin.com",
-      "https://twitter.com",
-      "https://github.com"
-    ],
-    "priceRange": "$$$"
-  }
-  </script>
-
-  <!-- Font Awesome 6 Icons Library & AOS Animations -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-  <!-- Reusable Topbar Placeholder -->
-  <div id="webvire-topbar"></div>
-
-  <!-- Reusable Header Navbar Placeholder -->
-  <div id="webvire-header"></div>
-
+@section('content')
   <!-- Hero Section with Pure 3D Component Canvas & Parallax Interaction -->
   <section class="hero">
     <div class="hero-glow-bg"></div>
@@ -99,8 +15,8 @@
         <p>We design, develop and deliver smart digital solutions that help businesses grow faster in the modern world.</p>
         
         <div class="actions">
-          <a class="btn btn-primary" href="contact.html">Start Your Project <i class="fa-solid fa-arrow-right"></i></a>
-          <a class="btn btn-outline" href="services.html">Explore Services</a>
+          <a class="btn btn-primary" href="{{ route('contact') }}">Start Your Project <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="btn btn-outline" href="{{ route('services') }}">Explore Services</a>
           <a class="btn btn-video" href="#">
             <span class="play-icon"><i class="fa-solid fa-play"></i></span> Watch Video
           </a>
@@ -145,7 +61,7 @@
                   <span class="window-title"><i class="fa-solid fa-code"></i> webvire_core.js</span>
                 </div>
                 <div class="code-viewport">
-                  <div class="code-line"><span class="c-keyword">import</span> <span class="c-obj">{ WebvireEngine }</span> <span class="c-keyword">from</span> <span class="c-str">'@webvire/3d'</span>;</div>
+                  <div class="code-line"><span class="c-keyword">import</span> <span class="c-obj">{ WebvireEngine }</span> <span class="c-keyword">from</span> <span class="c-str">'@@webvire/3d'</span>;</div>
                   <div class="code-line"><span class="c-keyword">const</span> <span class="c-var">app</span> = <span class="c-keyword">new</span> <span class="c-func">WebvireEngine</span>({</div>
                   <div class="code-line tab"><span class="c-attr">theme:</span> <span class="c-str">'cyber-navy'</span>,</div>
                   <div class="code-line tab"><span class="c-attr">mode:</span> <span class="c-str">'interactive-3d'</span>,</div>
@@ -211,7 +127,7 @@
     </div>
   </section>
 
-  <!-- Feature Strip Bar (Distinct Vibrant Colors) -->
+  <!-- Feature Strip Bar -->
   <div class="feature-strip" data-aos="fade-up">
     <div class="container">
       <div class="features-grid">
@@ -239,7 +155,7 @@
     </div>
   </div>
 
-  <!-- Core Services (Smart IT Solutions for Every Business - Individual Distinct Colors) -->
+  <!-- Core Services -->
   <section class="section section-alt" data-aos="fade-up">
     <div class="container">
       <div class="section-head">
@@ -253,53 +169,52 @@
           <div class="service-icon-circle icon-blue"><i class="fa-solid fa-globe"></i></div>
           <h3>Web Development</h3>
           <p>Modern, fast & scalable web solutions.</p>
-          <a class="card-link" href="services.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('services') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card-ref">
           <div class="service-icon-circle icon-mint"><i class="fa-solid fa-mobile-screen-button"></i></div>
           <h3>Mobile App Development</h3>
           <p>Powerful apps for Android & iOS.</p>
-          <a class="card-link" href="services.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('services') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card-ref">
           <div class="service-icon-circle icon-purple"><i class="fa-solid fa-code"></i></div>
           <h3>Software Development</h3>
           <p>Custom software for unique needs.</p>
-          <a class="card-link" href="services.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('services') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card-ref">
           <div class="service-icon-circle icon-rose"><i class="fa-solid fa-pen-ruler"></i></div>
           <h3>UI/UX Design</h3>
           <p>Creative designs that users love.</p>
-          <a class="card-link" href="services.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('services') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card-ref">
           <div class="service-icon-circle icon-sky"><i class="fa-solid fa-display"></i></div>
           <h3>IT Consulting</h3>
           <p>Right technology for better growth.</p>
-          <a class="card-link" href="services.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('services') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card-ref">
           <div class="service-icon-circle icon-orange"><i class="fa-solid fa-rocket"></i></div>
           <h3>Digital Marketing</h3>
           <p>Boost your brand's online presence.</p>
-          <a class="card-link" href="services.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('services') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Trusted Partner Section (Exact Match with Reference Design) -->
+  <!-- Trusted Partner Section -->
   <section class="section" data-aos="fade-up">
     <div class="container partner-grid">
       <div class="partner-img-wrapper" data-aos="zoom-in">
-        <img src="assets/partner_workspace_3d.png" alt="Webvire Technology Partner Workspace">
-        <!-- Floating Glassmorphic Growth Together Badge -->
+        <img src="{{ asset('assets/partner_workspace_3d.png') }}" alt="Webvire Technology Partner Workspace">
         <div class="floating-growth-card">
           <div class="growth-title">
             <span>Growth Together</span>
@@ -346,12 +261,12 @@
           </div>
         </div>
 
-        <a class="btn btn-primary" href="contact.html">Let's Build Something Amazing <i class="fa-solid fa-arrow-right"></i></a>
+        <a class="btn btn-primary" href="{{ route('contact') }}">Let's Build Something Amazing <i class="fa-solid fa-arrow-right"></i></a>
       </div>
     </div>
   </section>
 
-  <!-- Work Process Section (How We Turn Your Vision Into Reality - Exact Reference Match) -->
+  <!-- Work Process Section -->
   <section class="section section-alt" data-aos="fade-up">
     <div class="container">
       <div class="section-head">
@@ -388,7 +303,7 @@
     </div>
   </section>
 
-  <!-- Industries We Serve (Individual Distinct Pastel Colors) -->
+  <!-- Industries We Serve -->
   <section class="section">
     <div class="container">
       <div class="section-head">
@@ -442,7 +357,7 @@
     </div>
   </section>
 
-  <!-- Portfolio Section (Projects That Speak For Us - Exact Reference Match) -->
+  <!-- Portfolio Section -->
   <section class="section section-alt">
     <div class="container">
       <div class="portfolio-header">
@@ -451,50 +366,50 @@
           <h2>Projects That Speak For Us</h2>
           <p style="color: var(--text-muted); margin-top: 8px;">Explore some of our recent work and see the difference we create.</p>
         </div>
-        <a class="btn btn-primary" href="portfolio.html">View All Projects <i class="fa-solid fa-arrow-right"></i></a>
+        <a class="btn btn-primary" href="{{ route('portfolio') }}">View All Projects <i class="fa-solid fa-arrow-right"></i></a>
       </div>
 
       <div class="portfolio-grid">
         <div class="project-card">
           <div class="project-img-box">
-            <img src="assets/portfolio_onehouse.png" alt="Onehouse E-Commerce Platform">
+            <img src="{{ asset('assets/portfolio_onehouse.png') }}" alt="Onehouse E-Commerce Platform">
           </div>
           <div class="project-body">
             <span class="project-tag icon-blue">E-Commerce</span>
             <h3>Onehouse</h3>
             <p>A stylish and responsive e-commerce platform.</p>
-            <a class="card-link" href="portfolio.html">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="card-link" href="{{ route('portfolio') }}">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
 
         <div class="project-card">
           <div class="project-img-box">
-            <img src="assets/portfolio_sub800.png" alt="Sub800 Real Estate Portal">
+            <img src="{{ asset('assets/portfolio_sub800.png') }}" alt="Sub800 Real Estate Portal">
           </div>
           <div class="project-body">
             <span class="project-tag icon-orange">Real Estate</span>
             <h3>Sub800</h3>
             <p>Modern real estate platform for property listings.</p>
-            <a class="card-link" href="portfolio.html">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="card-link" href="{{ route('portfolio') }}">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
 
         <div class="project-card">
           <div class="project-img-box">
-            <img src="assets/portfolio_marche.png" alt="Marche Online Grocery App">
+            <img src="{{ asset('assets/portfolio_marche.png') }}" alt="Marche Online Grocery App">
           </div>
           <div class="project-body">
             <span class="project-tag icon-mint">Grocery</span>
             <h3>Marche</h3>
             <p>Advanced online grocery ordering platform.</p>
-            <a class="card-link" href="portfolio.html">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="card-link" href="{{ route('portfolio') }}">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials Section (Interactive Carousel Slider with Real Avatars) -->
+  <!-- Testimonials Section -->
   <section class="section">
     <div class="container">
       <div class="section-head">
@@ -504,7 +419,6 @@
       </div>
 
       <div class="testimonial-slider-wrapper">
-        <!-- Previous Slider Arrow -->
         <button class="slider-btn prev-btn" aria-label="Previous Testimonial">
           <i class="fa-solid fa-chevron-left"></i>
         </button>
@@ -521,7 +435,7 @@
           <p class="quote-text">“Webvire delivered an excellent solution for our business. The team was professional, skilled and always available for support. Highly recommended!”</p>
 
           <div class="client-avatar-wrapper">
-            <img src="assets/client_avatar.png" class="client-avatar-img" alt="Rajesh Verma">
+            <img src="{{ asset('assets/client_avatar.png') }}" class="client-avatar-img" alt="Rajesh Verma">
           </div>
 
           <div class="client-info">
@@ -529,7 +443,6 @@
             <span>CEO, Onehouse</span>
           </div>
 
-          <!-- Slider Dots Indicator -->
           <div class="slider-dots">
             <span class="dot active" data-index="0"></span>
             <span class="dot" data-index="1"></span>
@@ -537,7 +450,6 @@
           </div>
         </div>
 
-        <!-- Next Slider Arrow -->
         <button class="slider-btn next-btn" aria-label="Next Testimonial">
           <i class="fa-solid fa-chevron-right"></i>
         </button>
@@ -555,33 +467,23 @@
           <p>Let's build powerful digital solutions together.</p>
           
           <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-            <a class="btn btn-primary" href="contact.html">Get Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
-            <a class="btn btn-outline" href="contact.html">Contact Us</a>
+            <a class="btn btn-primary" href="{{ route('contact') }}">Get Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="btn btn-outline" href="{{ route('contact') }}">Contact Us</a>
           </div>
         </div>
 
         <div class="cta-img-box">
-          <img src="assets/cta_rocket_3d.png" alt="Webvire Rocket Launch 3D Graphic">
+          <img src="{{ asset('assets/cta_rocket_3d.png') }}" alt="Webvire Rocket Launch 3D Graphic">
         </div>
       </div>
     </div>
   </section>
+@endsection
 
-  <!-- Reusable Footer Placeholder -->
-  <div id="webvire-footer"></div>
-
-  <!-- Floating Back to Top Button -->
-  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to Top">
-    <i class="fa-solid fa-arrow-up"></i>
-  </button>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script src="script.js"></script>
+@push('scripts')
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       WebvireUI.init('index');
     });
   </script>
-</body>
-</html>
+@endpush

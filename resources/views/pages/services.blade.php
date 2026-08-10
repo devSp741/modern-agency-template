@@ -1,38 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore Webvire Services: Web Development, Mobile Apps, Custom Software, UI/UX Design & IT Consulting with Interactive Project Cost Estimator.">
-  <meta name="keywords" content="Web Development Services, Mobile App Development, UI UX Design Agency, Custom Software Development, Project Cost Calculator">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://webvire.com/services.html">
-  <title>Our Services & Cost Estimator | Webvire Technologies</title>
+@extends('layouts.app')
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" href="assets/logo.png">
-  <link rel="apple-touch-icon" href="assets/logo.png">
+@section('title', 'Services | Webvire - Smart IT Solutions & Custom Engineering')
+@section('meta_description', 'Discover Webvire services: Custom Web Development, Mobile App Development, Enterprise Software, UI/UX Design, IT Consulting and Interactive Cost Estimator.')
+@section('meta_keywords', 'Webvire Services, Web Development, Mobile Apps, Custom Software, UI UX Design, IT Consulting, Project Estimator')
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://webvire.com/services.html">
-  <meta property="og:title" content="Our Services & Project Cost Estimator | Webvire">
-  <meta property="og:description" content="Calculate your custom software project cost live and explore our full-stack engineering services.">
-  <meta property="og:image" content="https://webvire.com/assets/cta_rocket_3d.png">
-
-  <!-- Font Awesome 6 Icons Library & AOS Animations -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-  <!-- Reusable Topbar Placeholder -->
-  <div id="webvire-topbar"></div>
-
-  <!-- Reusable Header Navbar Placeholder -->
-  <div id="webvire-header"></div>
-
+@section('content')
   <!-- Subpage Hero -->
   <section class="subpage-hero">
     <div class="container">
@@ -70,7 +42,7 @@
     </div>
   </div>
 
-  <!-- Core Services Grid (Single Row 6 Cards Reference Match) -->
+  <!-- Core Services Grid -->
   <section class="section section-alt">
     <div class="container">
       <div class="section-head">
@@ -84,42 +56,42 @@
           <div class="service-icon-circle icon-blue"><i class="fa-solid fa-globe"></i></div>
           <h3>Web Development</h3>
           <p>Modern, fast & scalable web solutions.</p>
-          <a class="card-link" href="contact.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('contact') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card-ref">
           <div class="service-icon-circle icon-mint"><i class="fa-solid fa-mobile-screen-button"></i></div>
           <h3>Mobile App Development</h3>
           <p>Powerful apps for Android & iOS.</p>
-          <a class="card-link" href="contact.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('contact') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card-ref">
           <div class="service-icon-circle icon-purple"><i class="fa-solid fa-code"></i></div>
           <h3>Software Development</h3>
           <p>Custom software for unique needs.</p>
-          <a class="card-link" href="contact.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('contact') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card-ref">
           <div class="service-icon-circle icon-rose"><i class="fa-solid fa-pen-ruler"></i></div>
           <h3>UI/UX Design</h3>
           <p>Creative designs that users love.</p>
-          <a class="card-link" href="contact.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('contact') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card-ref">
           <div class="service-icon-circle icon-sky"><i class="fa-solid fa-display"></i></div>
           <h3>IT Consulting</h3>
           <p>Right technology for better growth.</p>
-          <a class="card-link" href="contact.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('contact') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card-ref">
           <div class="service-icon-circle icon-orange"><i class="fa-solid fa-rocket"></i></div>
           <h3>Digital Marketing</h3>
           <p>Boost your brand's online presence.</p>
-          <a class="card-link" href="contact.html">Know More <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="card-link" href="{{ route('contact') }}">Know More <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -176,13 +148,13 @@
           <div style="font-size: 12px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em;">ESTIMATED INVESTMENT</div>
           <div class="estimator-total-val" id="estimator-total-val">$2,500</div>
           <p style="font-size: 12px; color: #cbd5e1; margin-bottom: 22px;">Includes source code delivery, cloud deployment, and 60-day warranty.</p>
-          <a class="btn btn-primary" href="contact.html" style="width: 100%; justify-content: center;">Book This Scope <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="btn btn-primary" href="{{ route('contact') }}" style="width: 100%; justify-content: center;">Book This Scope <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Work Process Section (How We Turn Your Vision Into Reality) -->
+  <!-- Work Process Section -->
   <section class="section section-alt">
     <div class="container">
       <div class="section-head">
@@ -229,33 +201,23 @@
           <p>Let's build powerful digital solutions together.</p>
           
           <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-            <a class="btn btn-primary" href="contact.html">Get Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
-            <a class="btn btn-outline" href="contact.html">Contact Us</a>
+            <a class="btn btn-primary" href="{{ route('contact') }}">Get Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="btn btn-outline" href="{{ route('contact') }}">Contact Us</a>
           </div>
         </div>
 
         <div class="cta-img-box">
-          <img src="assets/cta_rocket_3d.png" alt="Webvire Rocket Launch 3D Graphic">
+          <img src="{{ asset('assets/cta_rocket_3d.png') }}" alt="Webvire Rocket Launch 3D Graphic">
         </div>
       </div>
     </div>
   </section>
+@endsection
 
-  <!-- Reusable Footer Placeholder -->
-  <div id="webvire-footer"></div>
-
-  <!-- Floating Back to Top Button -->
-  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to Top">
-    <i class="fa-solid fa-arrow-up"></i>
-  </button>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script src="script.js"></script>
+@push('scripts')
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       WebvireUI.init('services');
     });
   </script>
-</body>
-</html>
+@endpush

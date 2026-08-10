@@ -1,38 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Learn about Webvire Technologies - Our history, 2019-2026 evolution timeline, leadership engineering team, and core technology stack matrix.">
-  <meta name="keywords" content="About Webvire, IT Agency Team, Engineering Leadership, Technology Stack, Software History">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://webvire.com/about.html">
-  <title>About Us | Webvire - Our Story, Timeline & Team</title>
+@extends('layouts.app')
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" href="assets/logo.png">
-  <link rel="apple-touch-icon" href="assets/logo.png">
+@section('title', 'About Us | Webvire - Our Story, Timeline & Team')
+@section('meta_description', 'Learn about Webvire Technologies - Our history, 2019-2026 evolution timeline, leadership engineering team, and core technology stack matrix.')
+@section('meta_keywords', 'About Webvire, IT Agency Team, Engineering Leadership, Technology Stack, Software History')
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://webvire.com/about.html">
-  <meta property="og:title" content="About Us | Webvire Technologies">
-  <meta property="og:description" content="Discover our journey, company evolution timeline, leadership team, and custom engineering approach.">
-  <meta property="og:image" content="https://webvire.com/assets/partner_workspace_3d.png">
-
-  <!-- Font Awesome 6 Icons Library & AOS Animations -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-  <!-- Reusable Topbar Placeholder -->
-  <div id="webvire-topbar"></div>
-
-  <!-- Reusable Header Navbar Placeholder -->
-  <div id="webvire-header"></div>
-
+@section('content')
   <!-- Subpage Hero -->
   <section class="subpage-hero">
     <div class="container">
@@ -208,7 +180,7 @@
       <div class="process-grid">
         <div class="process-card" style="padding: 28px 20px;">
           <div class="client-avatar-wrapper" style="width: 80px; height: 80px; margin-bottom: 16px;">
-            <img src="assets/client_avatar.png" class="client-avatar-img" alt="Rajesh Verma">
+            <img src="{{ asset('assets/client_avatar.png') }}" class="client-avatar-img" alt="Rajesh Verma">
           </div>
           <h3>Rajesh Verma</h3>
           <p style="color: var(--blue-vibrant); font-weight: 700; font-size: 12px; margin-bottom: 10px; text-transform: uppercase;">CEO & Founder</p>
@@ -221,7 +193,7 @@
 
         <div class="process-card" style="padding: 28px 20px;">
           <div class="client-avatar-wrapper" style="width: 80px; height: 80px; margin-bottom: 16px;">
-            <img src="assets/client_avatar_2.png" class="client-avatar-img" alt="Priya Sharma">
+            <img src="{{ asset('assets/client_avatar_2.png') }}" class="client-avatar-img" alt="Priya Sharma">
           </div>
           <h3>Priya Sharma</h3>
           <p style="color: var(--purple-accent); font-weight: 700; font-size: 12px; margin-bottom: 10px; text-transform: uppercase;">Head of Product & Design</p>
@@ -234,7 +206,7 @@
 
         <div class="process-card" style="padding: 28px 20px;">
           <div class="client-avatar-wrapper" style="width: 80px; height: 80px; margin-bottom: 16px;">
-            <img src="assets/client_avatar_3.png" class="client-avatar-img" alt="Amit Patel">
+            <img src="{{ asset('assets/client_avatar_3.png') }}" class="client-avatar-img" alt="Amit Patel">
           </div>
           <h3>Amit Patel</h3>
           <p style="color: #0d9488; font-weight: 700; font-size: 12px; margin-bottom: 10px; text-transform: uppercase;">Lead Solutions Architect</p>
@@ -247,7 +219,7 @@
 
         <div class="process-card" style="padding: 28px 20px;">
           <div class="client-avatar-wrapper" style="width: 80px; height: 80px; margin-bottom: 16px;">
-            <img src="assets/client_avatar_4.png" class="client-avatar-img" alt="Sneha Gupta">
+            <img src="{{ asset('assets/client_avatar_4.png') }}" class="client-avatar-img" alt="Sneha Gupta">
           </div>
           <h3>Sneha Gupta</h3>
           <p style="color: #e11d48; font-weight: 700; font-size: 12px; margin-bottom: 10px; text-transform: uppercase;">Head of Mobile & AI</p>
@@ -271,33 +243,23 @@
           <p>Partner with Webvire to turn your digital vision into reality.</p>
           
           <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-            <a class="btn btn-primary" href="contact.html">Get Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
-            <a class="btn btn-outline" href="contact.html">Contact Us</a>
+            <a class="btn btn-primary" href="{{ route('contact') }}">Get Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="btn btn-outline" href="{{ route('contact') }}">Contact Us</a>
           </div>
         </div>
 
         <div class="cta-img-box">
-          <img src="assets/cta_rocket_3d.png" alt="Webvire Rocket Launch 3D Graphic">
+          <img src="{{ asset('assets/cta_rocket_3d.png') }}" alt="Webvire Rocket Launch 3D Graphic">
         </div>
       </div>
     </div>
   </section>
+@endsection
 
-  <!-- Reusable Footer Placeholder -->
-  <div id="webvire-footer"></div>
-
-  <!-- Floating Back to Top Button -->
-  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to Top">
-    <i class="fa-solid fa-arrow-up"></i>
-  </button>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script src="script.js"></script>
+@push('scripts')
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       WebvireUI.init('about');
     });
   </script>
-</body>
-</html>
+@endpush

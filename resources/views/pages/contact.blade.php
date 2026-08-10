@@ -1,38 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact Webvire Technologies - Get instant 2-hour response, free NDA, 1-on-1 discovery call, and project cost consultation.">
-  <meta name="keywords" content="Contact Webvire, Free Consultation, Web Development Proposal, Software Inquiry">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://webvire.com/contact.html">
-  <title>Contact Us | Webvire - Get Free Consultation</title>
+@extends('layouts.app')
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" href="assets/logo.png">
-  <link rel="apple-touch-icon" href="assets/logo.png">
+@section('title', 'Contact Us | Webvire - Request Free Consultation')
+@section('meta_description', 'Get in touch with Webvire Technologies - Request a free project consultation, estimate scope & budget, or call our team directly.')
+@section('meta_keywords', 'Contact Webvire, IT Agency Contact, Free Quote, Software Development Consultation')
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://webvire.com/contact.html">
-  <meta property="og:title" content="Contact Us | Webvire Technologies">
-  <meta property="og:description" content="Request a free project consultation and architecture estimation.">
-  <meta property="og:image" content="https://webvire.com/assets/cta_rocket_3d.png">
-
-  <!-- Font Awesome 6 Icons Library & AOS Animations -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-  <!-- Reusable Topbar Placeholder -->
-  <div id="webvire-topbar"></div>
-
-  <!-- Reusable Header Navbar Placeholder -->
-  <div id="webvire-header"></div>
-
+@section('content')
   <!-- Subpage Hero -->
   <section class="subpage-hero">
     <div class="container">
@@ -89,7 +61,7 @@
           <div>
             <b style="font-size: 14.5px; color: #0f172a;">Office Location</b>
             <p style="color: var(--text-muted); font-size: 13px; line-height: 1.5; margin-top: 2px; word-break: break-word;">
-              Karl Road, Near Thana, Gonda, Lucknow, Uttar Pradesh, India
+              Kursi Road, Near Thana Gudamba, Lucknow, Uttar Pradesh, India
             </p>
           </div>
         </div>
@@ -110,7 +82,7 @@
           </div>
           <div>
             <b style="font-size: 14.5px; color: #0f172a;">Call Us Direct</b>
-            <p style="color: var(--text-muted); font-size: 13px; margin-top: 2px;">+91 73027 72277</p>
+            <p style="color: var(--text-muted); font-size: 13px; margin-top: 2px;">+91 7309277237</p>
           </div>
         </div>
 
@@ -120,17 +92,16 @@
           </div>
           <div>
             <b style="font-size: 14.5px; color: #0f172a;">Working Hours</b>
-            <p style="color: var(--text-muted); font-size: 13px; margin-top: 2px;">Monday - Saturday: 9:00 AM - 7:00 PM IST</p>
+            <p style="color: var(--text-muted); font-size: 13px; margin-top: 2px;">Monday - Saturday: 10:00 AM - 8:00 PM IST</p>
           </div>
         </div>
 
         <div style="padding-top: 20px; border-top: 1px solid #e2e8f0;">
           <label style="font-size: 12px; font-weight: 700; color: #0f172a; display: block; margin-bottom: 12px; letter-spacing: 0.04em;">CONNECT ON SOCIALS</label>
           <div class="topbar-socials">
-            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
           </div>
         </div>
       </div>
@@ -140,50 +111,67 @@
         <div class="pill-badge" style="margin-bottom: 10px;">FREE ESTIMATION</div>
         <h3 style="font-size: 22px; font-weight: 800; margin-bottom: 20px; color: #0f172a;">Request Free Consultation</h3>
 
-        <form id="webvire-contact-form">
+        @if(session('success'))
+          <div style="background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; padding: 14px; border-radius: 8px; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+            <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
+          </div>
+        @endif
+
+        @if($errors->any())
+          <div style="background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; padding: 14px; border-radius: 8px; font-size: 14px; margin-bottom: 20px;">
+            <ul style="margin: 0; padding-left: 20px;">
+              @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+
+        <form id="webvire-contact-form" action="{{ route('contact.submit') }}" method="POST">
+          @csrf
           <div class="form-grid">
             <div class="form-group">
               <label for="name">Your Name *</label>
-              <input type="text" id="name" required placeholder="e.g. Rahul Verma">
+              <input type="text" id="name" name="name" required value="{{ old('name') }}" placeholder="e.g. Rahul Verma">
             </div>
 
             <div class="form-group">
               <label for="email">Email Address *</label>
-              <input type="email" id="email" required placeholder="e.g. rahul@example.com">
+              <input type="email" id="email" name="email" required value="{{ old('email') }}" placeholder="e.g. rahul@example.com">
             </div>
 
             <div class="form-group">
               <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" placeholder="+91 98765 43210">
+              <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" placeholder="+91 98765 43210">
             </div>
 
             <div class="form-group">
               <label for="service">Required Service *</label>
-              <select id="service" required>
+              <select id="service" name="subject" required>
                 <option value="">Select Service...</option>
-                <option value="web">Web Development</option>
-                <option value="mobile">Mobile App Development</option>
-                <option value="software">Software Development</option>
-                <option value="design">UI/UX Design</option>
-                <option value="consulting">IT Consulting</option>
-                <option value="marketing">Digital Marketing</option>
+                <option value="Web Development" {{ old('subject') == 'Web Development' ? 'selected' : '' }}>Web Development</option>
+                <option value="Mobile App Development" {{ old('subject') == 'Mobile App Development' ? 'selected' : '' }}>Mobile App Development</option>
+                <option value="Software Development" {{ old('subject') == 'Software Development' ? 'selected' : '' }}>Software Development</option>
+                <option value="UI/UX Design" {{ old('subject') == 'UI/UX Design' ? 'selected' : '' }}>UI/UX Design</option>
+                <option value="IT Consulting" {{ old('subject') == 'IT Consulting' ? 'selected' : '' }}>IT Consulting</option>
+                <option value="Digital Marketing" {{ old('subject') == 'Digital Marketing' ? 'selected' : '' }}>Digital Marketing</option>
               </select>
             </div>
 
             <div class="form-group full">
               <label for="budget">Estimated Budget (Optional)</label>
-              <select id="budget">
+              <select id="budget" name="budget">
                 <option value="">Select Budget Range...</option>
-                <option value="tier1">&lt; $5,000 (Basic Project)</option>
-                <option value="tier2">$5,000 - $15,000 (Standard Agency Project)</option>
-                <option value="tier3">$15,000 - $50,000 (Enterprise Solution)</option>
-                <option value="tier4">$50,000+ (Large Custom System)</option>
+                <option value="< $5,000">&lt; $5,000 (Basic Project)</option>
+                <option value="$5,000 - $15,000">$5,000 - $15,000 (Standard Agency Project)</option>
+                <option value="$15,000 - $50,000">$15,000 - $50,000 (Enterprise Solution)</option>
+                <option value="$50,000+">$50,000+ (Large Custom System)</option>
               </select>
             </div>
 
             <div class="form-group full">
               <label for="message">Project Details / Message *</label>
-              <textarea id="message" required placeholder="Tell us about your goals, features, or target timeline..."></textarea>
+              <textarea id="message" name="message" required placeholder="Tell us about your goals, features, or target timeline...">{{ old('message') }}</textarea>
             </div>
 
             <div class="form-group full">
@@ -256,36 +244,26 @@
         <div>
           <div class="pill-badge" style="background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.3);">READY TO GROW?</div>
           <h2>Need Instant Help? Call Our Team</h2>
-          <p>Speak directly with our senior software architect at +91 73027 72277.</p>
+          <p>Speak directly with our senior software architect at +91 7309277237.</p>
           
           <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-            <a class="btn btn-primary" href="tel:+917302772277"><i class="fa-solid fa-phone"></i> Call +91 73027 72277</a>
+            <a class="btn btn-primary" href="tel:+917309277237"><i class="fa-solid fa-phone"></i> Call +91 7309277237</a>
             <a class="btn btn-outline" href="mailto:info@webvire.com"><i class="fa-solid fa-envelope"></i> Email Us Direct</a>
           </div>
         </div>
 
         <div class="cta-img-box">
-          <img src="assets/cta_rocket_3d.png" alt="Webvire Rocket Launch 3D Graphic">
+          <img src="{{ asset('assets/cta_rocket_3d.png') }}" alt="Webvire Rocket Launch 3D Graphic">
         </div>
       </div>
     </div>
   </section>
+@endsection
 
-  <!-- Reusable Footer Placeholder -->
-  <div id="webvire-footer"></div>
-
-  <!-- Floating Back to Top Button -->
-  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to Top">
-    <i class="fa-solid fa-arrow-up"></i>
-  </button>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script src="script.js"></script>
+@push('scripts')
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       WebvireUI.init('contact');
     });
   </script>
-</body>
-</html>
+@endpush

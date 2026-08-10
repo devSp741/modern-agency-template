@@ -1,38 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Join Webvire Technologies - Explore open engineering roles, remote culture, MacBook Pro setups, and team benefits.">
-  <meta name="keywords" content="Webvire Careers, Developer Jobs, Senior Full Stack Developer, Lead UI UX Designer, Remote Engineering Jobs">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://webvire.com/careers.html">
-  <title>Careers | Webvire - Open Roles & Perks</title>
+@extends('layouts.app')
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" href="assets/logo.png">
-  <link rel="apple-touch-icon" href="assets/logo.png">
+@section('title', 'Careers | Webvire - Openings, Culture & Engineering Team')
+@section('meta_description', 'Join Webvire Technologies - Explore open software engineering, UI/UX design, and DevOps roles, team perks, hardware allowances, and 4-step hiring process.')
+@section('meta_keywords', 'Webvire Careers, Developer Jobs, Software Engineering Openings, Remote Developer Jobs, UI UX Designer Jobs')
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://webvire.com/careers.html">
-  <meta property="og:title" content="Careers | Webvire Technologies">
-  <meta property="og:description" content="Build the future of technology with us. View active openings and engineering perks.">
-  <meta property="og:image" content="https://webvire.com/assets/partner_workspace_3d.png">
-
-  <!-- Font Awesome 6 Icons Library & AOS Animations -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-  <!-- Reusable Topbar Placeholder -->
-  <div id="webvire-topbar"></div>
-
-  <!-- Reusable Header Navbar Placeholder -->
-  <div id="webvire-header"></div>
-
+@section('content')
   <!-- Subpage Hero -->
   <section class="subpage-hero">
     <div class="container">
@@ -89,7 +61,7 @@
           <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
             Lead web engineering projects using React, Node.js, Next.js, and AWS cloud microservices.
           </p>
-          <a class="btn btn-primary" href="contact.html" style="width: 100%; justify-content: center;">Apply Now <i class="fa-solid fa-paper-plane"></i></a>
+          <a class="btn btn-primary" href="{{ route('contact') }}" style="width: 100%; justify-content: center;">Apply Now <i class="fa-solid fa-paper-plane"></i></a>
         </div>
 
         <div class="project-card" style="padding: 30px 24px;">
@@ -101,7 +73,7 @@
           <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
             Create high-converting web interfaces, interactive design systems, and Figma prototypes.
           </p>
-          <a class="btn btn-primary" href="contact.html" style="width: 100%; justify-content: center;">Apply Now <i class="fa-solid fa-paper-plane"></i></a>
+          <a class="btn btn-primary" href="{{ route('contact') }}" style="width: 100%; justify-content: center;">Apply Now <i class="fa-solid fa-paper-plane"></i></a>
         </div>
 
         <div class="project-card" style="padding: 30px 24px;">
@@ -113,7 +85,7 @@
           <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
             Architect cross-platform Flutter & iOS/Android native mobile applications.
           </p>
-          <a class="btn btn-primary" href="contact.html" style="width: 100%; justify-content: center;">Apply Now <i class="fa-solid fa-paper-plane"></i></a>
+          <a class="btn btn-primary" href="{{ route('contact') }}" style="width: 100%; justify-content: center;">Apply Now <i class="fa-solid fa-paper-plane"></i></a>
         </div>
 
         <div class="project-card" style="padding: 30px 24px;">
@@ -125,7 +97,7 @@
           <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
             Automate CI/CD pipelines, Kubernetes container orchestration, and cloud infrastructure security.
           </p>
-          <a class="btn btn-primary" href="contact.html" style="width: 100%; justify-content: center;">Apply Now <i class="fa-solid fa-paper-plane"></i></a>
+          <a class="btn btn-primary" href="{{ route('contact') }}" style="width: 100%; justify-content: center;">Apply Now <i class="fa-solid fa-paper-plane"></i></a>
         </div>
       </div>
     </div>
@@ -227,33 +199,23 @@
           <p>We are always interested in meeting talented engineers and designers.</p>
           
           <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-            <a class="btn btn-primary" href="contact.html">Submit Resume <i class="fa-solid fa-arrow-right"></i></a>
-            <a class="btn btn-outline" href="contact.html">Contact HR Team</a>
+            <a class="btn btn-primary" href="{{ route('contact') }}">Submit Resume <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="btn btn-outline" href="{{ route('contact') }}">Contact HR Team</a>
           </div>
         </div>
 
         <div class="cta-img-box">
-          <img src="assets/cta_rocket_3d.png" alt="Webvire Rocket Launch 3D Graphic">
+          <img src="{{ asset('assets/cta_rocket_3d.png') }}" alt="Webvire Rocket Launch 3D Graphic">
         </div>
       </div>
     </div>
   </section>
+@endsection
 
-  <!-- Reusable Footer Placeholder -->
-  <div id="webvire-footer"></div>
-
-  <!-- Floating Back to Top Button -->
-  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to Top">
-    <i class="fa-solid fa-arrow-up"></i>
-  </button>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script src="script.js"></script>
+@push('scripts')
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       WebvireUI.init('careers');
     });
   </script>
-</body>
-</html>
+@endpush
