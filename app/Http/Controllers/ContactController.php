@@ -31,7 +31,7 @@ class ContactController extends Controller
             'message' => 'required|string|min:5',
         ]);
 
-        $recipientEmail = 'developersp741@gmail.com';
+        $recipientEmail = env('CONTACT_MAIL_RECIPIENT', 'gbytedeveloper@gmail.com');
 
         try {
             Mail::to($recipientEmail)->send(new ContactFormMail($validated));
